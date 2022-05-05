@@ -1,28 +1,5 @@
 ## Plantilla Backend con Laravel-Lumen (Con autenticación JWT)
 -----------
-Esta API la estamos ocupando para la verificación de empresas cuyo representante no posee dui (osea es extranjero y solo tiene un nit de propietario o representante legal).
-
-Usa tunnel para conectarse a base de datos DGII
-
-Datos del docker-compose utilizado:
- 
-     #BACKEND DEV_01
-     backend_dev_01:
-      image: php:7.4-minsal
-      container_name: backend_dev_01
-      restart: always
-      environment:
-       - VIRTUAL_HOST=dev01.sigenesishost.com
-       - LETSENCRYPT_HOST=dev01.sigenesishost.com
-       - LETSENCRYPT_EMAIL=ever.murcia@salud.gob.sv
-       - HTTPS_METHOD=noredirect
-      volumes:
-       - ./services/dev01/master/backend/html:/var/www/html
-       - ./services/dev01/master/backend/apache_log:/var/log/apache2
-      ports:
-       - "804:80"
-       - "805:8000"
-
 
 
 ![jwt-auth-banner](https://cloud.githubusercontent.com/assets/1801923/9915273/119b9350-5cae-11e5-850b-c941cac60b32.png)
@@ -46,13 +23,15 @@ Sistema Base con autenticación JWT.
 
 ## Consideraciones Previas
 
-Versión de PHP: 7.2+
+Versión de PHP: 7.3+
 
 Abrir una terminal y ejecutar:
 
 Ejecute **composer update**
 
 **php -S localhost:8000 -t public** 
+El comando anterior difiere cuando debemos de correr la documentación de swagger, para ello hacemos lo siguiente:
+**php -S localhost:8000 public/index.php** 
 
 Vaya a su navegador preferido (google Chrome, Firefox u otros) y escriba la siguiente dirección url:
 **http://localhost:8000/**
